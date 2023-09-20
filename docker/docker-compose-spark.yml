@@ -13,6 +13,7 @@ services:
       - SPARK_SSL_ENABLED=no
     volumes:
       - ../spark-scripts:/spark-scripts
+      - ../spark-driver:/spark-driver
     ports:
       - ${SPARK_MASTER_UI}:8080
       - ${SPARK_MASTER_PORT}:7077
@@ -32,6 +33,7 @@ services:
       - SPARK_SSL_ENABLED=no
     volumes:
       - ../spark-scripts:/spark-scripts
+      - ../spark-driver:/spark-driver
     depends_on:
       - dibimbing-dataeng-spark-master
 
@@ -42,3 +44,4 @@ services:
 networks:
   default:
     name: dataeng-network
+    external: true
